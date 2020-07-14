@@ -10,8 +10,7 @@
                     <chat-component v-for="(value,index) in chat.message"
                                     :key="index" :user="chat.user[index]"
                                     :color="chat.color[index]"
-                                    :time="chat.time[index]"
-                                    :active-users="activeUsers">
+                                    :time="chat.time[index]">
                         @{{ value }}
                     </chat-component>
                 </ul>
