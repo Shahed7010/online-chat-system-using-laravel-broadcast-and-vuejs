@@ -4,15 +4,17 @@
         <li class="list-group-item" :class="colorClass"><slot></slot></li>
         <small class="badge badge-secondary float-right">{{user}}, {{time}}</small>
         </div>
+        <div>{{activeUsers}}</div>
     </div>
 </template>
 
 <script>
     export default {
         props:[
-          'color',
+            'color',
             'user',
             'time',
+            'activeUsers'
         ],
         computed:{
           colorClass(){

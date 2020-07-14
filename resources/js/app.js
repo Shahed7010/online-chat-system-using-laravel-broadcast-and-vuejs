@@ -39,6 +39,7 @@ const app = new Vue({
     data(){
         return{
             message:'',
+            activeUsers:null,
             chat:{
                 message:[],
                 user:[],
@@ -99,15 +100,19 @@ const app = new Vue({
             })
         Echo.join(`chat`)
             .here((users) => {
+                console.log(users);
+                this.activeUsers = users;
                 this.activeNow = users.length
             })
             .joining((user) => {
                 this.activeNow += 1;
+                this.activeUsers.push(user);
                 this.$toaster.success(user.name+' Just Join to Chat Room')
 
             })
             .leaving((user) => {
                 this.activeNow -= 1;
+                this.activeUsers.pop(user);
                 this.$toaster.warning(user.name+' Just Leave to Chat Room')
             });
     }
